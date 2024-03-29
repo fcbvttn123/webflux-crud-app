@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ca.sheridancollege.vutran.beans.Student;
 import ca.sheridancollege.vutran.repo.StudentRepo;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 public class StudentService {
@@ -16,4 +17,8 @@ public class StudentService {
 	public Flux<Student> getStudents() {
 		return sr.findAll();
 	}
+	
+	public Mono<Student> addStudent(Student student) {
+        return sr.save(student);
+    }
 }
