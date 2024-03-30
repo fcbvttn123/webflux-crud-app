@@ -14,6 +14,18 @@
 
 - Method: GET
 
+### How to delete one Student (in Postmand) 
+
+- URL: http://localhost:8080/students/{id}
+
+- Method: DELETE
+
+### How to update one Student (in Postmand) 
+
+- URL: http://localhost:8080/students/{id}
+
+- Method: UPDATE
+
 # New Knowledge 
 
 ### Flux vs Mono 
