@@ -22,11 +22,11 @@ public class StudentService {
         return sr.save(student);
     }
 	
-	public Mono<Void> deleteStudentById(Long id) {
+	public Mono<Void> deleteStudentById(String id) {
         return sr.deleteById(id);
     }
 	
-	public Mono<Student> updateStudent(Long id, Student updatedStudent) {
+	public Mono<Student> updateStudent(String id, Student updatedStudent) {
         return sr.findById(id).flatMap(existingStudent -> {
              existingStudent.setName(updatedStudent.getName());
              return sr.save(existingStudent);

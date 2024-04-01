@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Document(collection="students")
 public class Student {
 	@Id
-	private Long id;
+	private String id;
 	private String name;
 }
 

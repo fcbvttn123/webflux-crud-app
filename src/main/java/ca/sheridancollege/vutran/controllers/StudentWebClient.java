@@ -70,7 +70,7 @@ public class StudentWebClient {
 	}
 	
 	@GetMapping("/deleteStudent/{id}")
-	public String deleteStudent(@PathVariable Long id) {
+	public String deleteStudent(@PathVariable String id) {
 	    client.delete()
 	         .uri("/students/{id}", id)
 	         .retrieve()

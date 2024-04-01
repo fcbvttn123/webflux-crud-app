@@ -33,12 +33,12 @@ public class StudentController {
 	}
 	
 	@DeleteMapping("/{id}")
-    public Mono<Void> deleteStudent(@PathVariable Long id) {
+    public Mono<Void> deleteStudent(@PathVariable String id) {
         return service.deleteStudentById(id);
     }
 
     @PutMapping("/{id}")
-    public Mono<Student> updateStudent(@PathVariable Long id, @RequestBody Student updatedStudent) {
+    public Mono<Student> updateStudent(@PathVariable String id, @RequestBody Student updatedStudent) {
         return service.updateStudent(id, updatedStudent);
     }
 	
