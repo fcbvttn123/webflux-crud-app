@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Student List</h1>
+    
+    <!-- Table to display student list -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through the studentList attribute and display each student -->
+            <tr th:each="student : ${studentList}">
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.name}"></td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <br>
+    
+    <!-- Form to add a new student -->
+    <h2>Add New Student</h2>
+    <form action="/addStudent" method="post">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id"><br><br>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <input type="submit" value="Add Student">
+    </form>
+</body>
+</html>
