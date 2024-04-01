@@ -2,7 +2,11 @@ package ca.sheridancollege.vutran.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import ca.sheridancollege.vutran.beans.Student;
@@ -52,6 +56,27 @@ public class StudentWebClient {
 	    LOGGER.info("Retrieved students: {}", students);
 
 	    return "index"; 
+	}
+	
+	@PostMapping("/addStudent")
+	public String addStudent(@ModelAttribute Student student, Model model) {
+	    client.post()
+	         .uri("/students")
+	         .body(Mono.just(student), Student.class)
+	         .retrieve()
+	         .bodyToMono(Void.class)
+	         .subscribe(); 
+	    return "redirect:/";
+	}
+	
+	@GetMapping("/deleteStudent/{id}")
+	public String deleteStudent(@PathVariable Long id) {
+	    client.delete()
+	         .uri("/students/{id}", id)
+	         .retrieve()
+	         .bodyToMono(Void.class)
+	         .subscribe(); 
+	    return "redirect:/";
 	}
 	
 }

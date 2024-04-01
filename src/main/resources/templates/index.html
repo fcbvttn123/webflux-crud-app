@@ -13,6 +13,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Click to Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,7 @@
             <tr th:each="student : ${studentList}">
                 <td th:text="${student.id}"></td>
                 <td th:text="${student.name}"></td>
+                <td><a th:href="@{/deleteStudent/} + ${student.id}">Delete</a></td>
             </tr>
         </tbody>
     </table>
