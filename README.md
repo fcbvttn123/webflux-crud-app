@@ -6,7 +6,7 @@
 
 - Method: POST
 
-- Value: { "id": 1, "name": "John"}
+- Value: { "name": "John"}
 
 ### How to read all Students (in Postmand) 
 
