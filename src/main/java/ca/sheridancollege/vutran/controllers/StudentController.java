@@ -27,6 +27,11 @@ public class StudentController {
 		return service.getStudents();
 	}
 	
+	@GetMapping(value="/live", produces="text/event-stream")
+	public Flux<Student> getStudentsLive() {
+	    return service.getStudents();
+	}
+	
 	@PostMapping()
 	public Mono<Student> insertStudent(@RequestBody Student s) {
 		return service.addStudent(s);
