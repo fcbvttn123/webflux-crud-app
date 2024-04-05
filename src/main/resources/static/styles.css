@@ -1,0 +1,53 @@
+/* Define styles for the header */
+h1 {
+    color: #333; /* Dark grey color */
+    text-align: center;
+}
+
+/* Define styles for the table */
+table {
+    width: 50%; /* Set table width to 50% of the container */
+    margin: 20px auto; /* Center the table horizontally with a 20px margin from the top */
+    border-collapse: collapse; /* Collapse borders to remove space between table cells */
+}
+
+th, td {
+    padding: 8px; /* Add padding to table cells */
+    text-align: left; /* Align text to the left */
+    border: 1px solid #ddd; /* Add border to cells with light grey color */
+}
+
+/* Define styles for the "Add New Student" section */
+h2 {
+    margin-top: 40px; /* Add margin on top of the "Add New Student" section */
+    text-align: center; /* Center the heading */
+}
+
+form {
+    width: 50%; /* Set form width to 50% of the container */
+    margin: 0 auto; /* Center the form horizontally */
+}
+
+label {
+    display: block; /* Display labels as blocks for better spacing */
+    margin-bottom: 8px; /* Add margin below each label */
+}
+
+input[type="text"] {
+    width: calc(100% - 20px); /* Set input width to 100% minus 20px for padding */
+    padding: 8px; /* Add padding to input fields */
+    margin-bottom: 10px; /* Add margin below input fields */
+}
+
+input[type="submit"] {
+    width: 100%; /* Set submit button width to 100% */
+    padding: 10px; /* Add padding to submit button */
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* Darker green color on hover */
+}

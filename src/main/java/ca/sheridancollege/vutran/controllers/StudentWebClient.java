@@ -24,38 +24,34 @@ public class StudentWebClient {
 	private static final Logger LOGGER = LoggerFactory.getLogger(StudentWebClient.class);
 	WebClient client = WebClient.create("http://localhost:8080");
 	
-	public void consume() {
-
-        Mono<Student> studentMono = client.get()
-          .uri("/students/{id}", "1")
-          .retrieve()
-          .bodyToMono(Student.class);
-
-        studentMono.subscribe(student -> LOGGER.info("Student: {}", student));
-
-        Flux<Student> studentFlux = client.get()
-          .uri("/students")
-          .retrieve()
-          .bodyToFlux(Student.class);
-
-        studentFlux.subscribe(student -> LOGGER.info("Student: {}", student));
-        
-    }
-	
 	@GetMapping("/")
 	public String getIndex(Model model) {
+		
 	    Mono<List<Student>> studentMono = client.get()
-	      .uri("/students")
-	      .retrieve()
-	      .bodyToFlux(Student.class)
-	      .collectList();
+	        .uri("/students")
+	        .retrieve()
+	        .bodyToFlux(Student.class)
+	        .collectList();
 
 	    List<Student> students = studentMono.block();
 	    model.addAttribute("studentList", students);
-
 	    LOGGER.info("Retrieved students: {}", students);
 
-	    return "index"; 
+	    return "index";
+	}
+	
+	@GetMapping("/live")
+	public String getIndexLive(Model model) {
+	    Flux<Student> liveStudentFlux = client.get()
+	        .uri("/students/live")
+	        .retrieve()
+	        .bodyToFlux(Student.class);
+
+	    liveStudentFlux.subscribe(student -> {
+	        LOGGER.info("Live Student: {}", student);
+	    });
+
+	    return "index";
 	}
 	
 	@PostMapping("/addStudent")
